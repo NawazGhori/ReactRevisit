@@ -881,7 +881,174 @@ class Login extends React.Component<IProps, IState>{
 export default Login
 
 
-Tried Register.tsx example (with firstname,lastname,email,phoneno,address,gender,languages,country)
+Tried Register.tsx example (with firstname,lastname,email,phoneno,address,gender,languages,country) 
 
 7-04-2021
 =========
+Rest Call example
+    - we can make rest calls using axios 
+    - Install axios using command >yarn add axios --save
+
+Rest.tsx
+========
+import React, { Component } from "react";
+import axios from "axios";
+import { DataGrid } from "@material-ui/data-grid";
+interface Country {
+  name: string;
+  capital: string;
+  region: string;
+  subregion: string;
+  population: number;
+  flag: string;
+}
+interface RestState {
+  response: Country[];
+}
+
+interface RestProps {}
+const columns = [
+  { field: "name", headerName: "Name", width: 130 },
+
+  { field: "capital", headerName: "Captial", width: 130 },
+
+  { field: "region", headerName: "Region", width: 130 },
+  { field: "subregion", headerName: "Sub Region", width: 200 },
+
+  {
+    field: "population",
+    headerName: "Population",
+    type: "number",
+    width: 150
+  },
+
+  { field: "flag", headerName: "Flag", width: 350 }
+
+  //     field: 'fullName',
+  //     headerName: 'Full name',
+  //     description: 'This column has a value getter and is not sortable.',
+  //     sortable: false,
+  //     width: 160,
+  //     valueGetter: (params:any) =>
+  //         `${params.getValue('firstName') || ''} ${params.getValue('lastName') || ''}`,
+  // },
+];
+
+class Rest extends Component<RestProps, RestState> {
+  constructor(props: RestProps) {
+    super(props);
+    this.state = {
+      response: []
+    };
+  }
+
+  componentDidMount() {
+    axios.get("https://restcountries.eu/rest/v2/all").then(
+      res => {
+        console.log(res);
+        const { data } = res; //destructuring
+        console.log(data);
+        const results = data.map((ele:any, index:any) => ({
+          id: index,
+          name: ele.name,
+          capital: ele.capital,
+          region: ele.region,
+          subregion: ele.subregion,
+          population: ele.population,
+          flag: ele.flag
+        }));
+        console.log(results);
+        this.setState({
+          response: results
+        });
+      },
+      err => {
+        console.log(err);
+      }
+    );
+  }
+
+  render() {
+    console.log(this.state.response);
+    return (
+      <React.Fragment>
+        {/* {JSON.stringify(this.state.response)} */}
+
+        <div style={{ height: 600, width: "100%" }}>
+          <DataGrid rows={this.state.response} columns={columns} pageSize={8} />
+        </div>
+      </React.Fragment>
+    );
+  }
+}
+
+export default Rest;
+
+index.tsx
+========
+import Rest from './rest-ex/Rest';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <Rest/>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+
+08-04-2021
+===========
+Rest example -2
+
+CustRest.tsx
+============
+
+import axios from "axios";
+import React,{Component} from "react";
+interface CustRestProps{}
+interface CustRestState{
+    response:any
+}
+
+class CustRest extends Component<CustRestProps,CustRestState>{
+    constructor(props:CustRestProps){
+        super(props)
+        this.state = {
+            response : {}
+        }
+    }
+
+    componentDidMount(){
+        axios.get("https://www.w3schools.com/angular/customers.php").then(
+            (posRes)=>{
+                const {data} = posRes
+                this.setState({
+                    response: data
+                })
+            },(errRes)=>{
+                console.log(errRes)
+            })
+    }
+
+    render(){
+        return(
+            <React.Fragment>
+                {JSON.stringify(this.state.response)}
+            </React.Fragment>
+        )
+    }
+
+}
+
+export default CustRest;
+
+index.tsx
+=========
+import CustRest from './rest-ex/CustRest';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <CustRest/>
+  </React.StrictMode>,
+  document.getElementById('root')
+);

@@ -1,0 +1,887 @@
+Introduction 
+
+Environmental Setup
+
+Components in ReactJS
+    ->Functional level Components
+    -> class level Components
+
+communication between Components
+    ->state
+    ->props
+
+RestAPI Calls
+    ->axios module
+
+State Managements
+    ->redux
+    ->saga
+    ->thunk
+
+ECommerce Application
+
+Forms with Validations
+
+Higher Order Functions
+
+19-03-2021:
+    Components:
+        - Reusable portion of complex UI is called as Component.
+        - These components are Reusable.
+        - As a React Developer, we can provide communication between components.
+        - React Application are Component Based Application.
+        - In React, we can create 2 types of components.
+            1) Class-level Components
+            2) Functional level components
+        - Classlevel components also called as stateful components.
+        - Functional components also called as stateless components.
+
+            > npx create-react-app components-app --template typescript
+            > cd components-app    
+    *******************************
+        components-app
+            src
+                First.tsx
+                index.tsx (-register your component in this file)
+            public 
+                index. html  
+
+22-3-2021
+=============================================================================
+First.tsx:
+==========
+//import  "React" class which is predefined class used to create Component
+import React From "react";
+
+//props is predefined object used to receive data from another components
+//we will define props using interface
+interface IProps{}
+
+//state is predefined object used to represent the component data
+//we will define state using interface
+interface IState{}
+
+//create class
+class First extends React.Component<IProps,IState>{
+    //recieving props at boot time
+    constructor(props:IProps){ 
+        super(props);
+    }
+
+    render(){
+        return(
+            <h1>Welcome to NawazIT for ReactJS</h1>
+        )
+    }
+
+};
+
+//export First component
+export default First;
+
+//index.tsx
+===================================
+replace <App/> to <First/>
+
+
+Second.tsx
+===========
+import React from 'react';
+
+interface IProps{}
+interface IState{}
+
+class Second extends React.Component<IProps,IState>{
+    constructor(props:IProps){
+        super(props)
+    }
+
+    render(){
+        return(
+            <h1>SecondComponent</h1>
+        )
+    }
+}
+
+export default Second;
+
+Third.tsx
+==========
+import React from 'react';
+import First from './First';
+import Second from './Second';
+
+interface IProps{}
+interface IState{}
+
+class Third extends React.Component<IProps,IState>{
+    constructor(props:IProps){
+        super(props)
+    }
+
+    render(){
+        return(
+            <React.Fragment>
+               <First/>
+               <Second/> 
+            </React.Fragment>
+        )
+    }
+}
+
+export default Third;
+
+index.tsx
+=========
+ReactDOM.render(
+  <React.StrictMode>
+    <Third />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+
+23-03-2021
+==========
+State-app
+=========
+
+App.tsx
+=======
+import React from 'react';
+
+//state - predefined object used to define the component data
+// we will define  state by using interfaces
+interface IState{
+  strData:string,
+  numData:number,
+  booleanData:boolean,
+  strArray:string[],
+  objData:any,
+  products:any[]
+}
+
+interface IProps{
+
+}
+
+class App extends React.Component<IProps,IState>{
+    constructor(props:IProps){
+      super(props);
+      this.state ={
+        strData: "Welcome to ReactJS with Typescript",
+        numData: 100,
+        booleanData: true,
+        strArray:['Angular','React','VueJS'],
+        objData:{"key1":"Hello_1"},
+        products:[
+          {"p_id":111,"p_name":"p_one","p_cost":10000},
+          {"p_id":222,"p_name":"p_two","p_cost":20000},
+          {"p_id":333,"p_name":"p_three","p_cost":30000},
+          {"p_id":444,"p_name":"p_four","p_cost":40000},
+          {"p_id":555,"p_name":"p_five","p_cost":50000},
+        ]
+      }
+    }
+
+    render(){
+      return(
+        <React.Fragment>
+          <h1>strData:{this.state.strData}</h1><br/>
+          <h1>numData:{this.state.numData}</h1><br/>
+          <h1>booleanData:{JSON.stringify(this.state.booleanData)}</h1><br/>
+          <h1>strArray:</h1>
+          {this.state.strArray.map((element:string,index:number)=>(<h1 key={index}>{element}</h1>))}<br/>
+
+          <h1>objData:{this.state.objData.key1}</h1>
+
+          <h1>products:</h1>
+          <table>
+            <tr>
+              <th>SNO</th>
+              <th>P_ID</th>
+              <th>P_NAME</th>
+              <th>P_COST</th>
+            </tr>
+          
+          {this.state.products.map((element:any,index:number)=>(
+            <tr key={index}>
+              <td>{index+1}</td>
+              <td>{element.p_id}</td>
+              <td>{element.p_name}</td>
+              <td>{element.p_cost}</td>
+            </tr>
+          ))}
+          </table>
+        </React.Fragment>
+      )
+    }
+
+}
+
+export default App;
+
+
+
+index.css (used to write global css)
+=========
+table,th,td{
+    border: 1px solid red;
+}
+table{
+  width: 100%;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+th{
+  height: 5rem;
+  vertical-align: bottom;
+}
+
+td{
+  height: 3rem;
+  font-weight: bold;
+  vertical-align: bottom;
+}
+
+tr:hover{
+  background-color: yellow;
+}
+
+
+24-03-2020
+===========
+
+conversion of tsx => jsx by npm/yarn ,
+conversion of jsx => js is done by babel tool internally in browser
+
+
+change-state
+=============
+App.tsx
+=======
+import React from 'react';
+
+//state - predefined object used to define the component data
+// we will define  state by using interfaces
+interface IState{
+  sub:string
+}
+
+interface IProps{}
+
+class App extends React.Component<IProps,IState>{
+    constructor(props:IProps){
+      super(props);
+      this.state ={
+        sub: "ReactJS"
+      }
+     
+    }
+
+    my_fun = ()=>{
+      this.setState({
+        sub : "ReactJS with Typescript"
+      })  
+    };
+    render(){
+      return(
+        <React.Fragment>
+          <h1>state:{this.state.sub}</h1><br/>
+          <button onClick={this.my_fun}>Change State</button>
+        </React.Fragment>
+      )
+    }
+
+}
+
+export default App;
+====================
+
+Events.tsx
+==========
+import React from "react";
+
+interface IState{
+    msg:string;
+}
+
+interface IProps{}
+
+class Events extends React.Component<IProps,IState>{
+
+    constructor(props:IProps){
+        super(props);
+        this.state = {
+            msg: ""
+        }
+    }
+    fun_one = ()=>{
+        this.setState({
+            msg: "Function without arguments"
+        })
+    }
+    fun_two = (arg1:string,arg2:string)=>{
+        if(arg1=="admin1" && arg2=="admin1"){
+            this.setState({
+                msg: "Login success"
+            })
+        }else{
+            this.setState({
+                msg: "Login failed"
+            })
+        }
+       
+    }
+    render(){
+        return(
+        <React.Fragment>
+            <h1>{this.state.msg}</h1>
+            <button onClick={this.fun_one}>Button1</button>
+            <button onClick={()=>this.fun_two('admin1','admin1')}>Button2</button>
+        </React.Fragment>
+        )
+    }
+}
+export default Events;
+Notes:
+setState() function used to change the state,
+onClick is event used to call the required function
+
+
+
+25-03-2021
+==========
+State:
+  -state is the predefined object used to store component data
+props:
+  -props is the predefined object used to receive data from other component
+
+communication between components:
+  we want to send the data from Firstcomponent to Secondcomponent
+  This is achieved using props
+
+
+state- componentData 
+props - used to receive data from other components
+
+ex: sending mail to some one ( u need -mailcontent(state of First Component)
+                                      -receiveraddress(import SecondComponent in FirstComponent )
+                                      -sending(using render() and pass the state to SecondComponent using tag attributes)
+                              )
+
+29-03-2021
+===========
+First.tsx
+==========
+import React from "react";
+import Second from "./Second";
+interface IProps { };
+interface IState {
+    key1: string;
+    key2: number;
+    key3: boolean;
+    key4: any;
+    key5: any;
+};
+class First extends React.Component<IProps, IState>{
+
+    constructor(props: IProps) {
+        super(props);
+        this.state = {
+            key1: "Hello_1",
+            key2: 100,
+            key3: true,
+            key4: { key: "Hello" },
+            key5: [
+                { "p_id": 111, "p_name": "p_one", "p_cost": 10000 },
+                { "p_id": 222, "p_name": "p_two", "p_cost": 20000 },
+                { "p_id": 333, "p_name": "p_three", "p_cost": 30000 },
+                { "p_id": 444, "p_name": "p_four", "p_cost": 40000 },
+                { "p_id": 555, "p_name": "p_five", "p_cost": 50000 }
+            ]
+        }
+    };
+
+    render() {
+        return (            
+            <React.Fragment>
+                <Second key1={this.state.key1}
+                    key2={this.state.key2}
+                    key3={this.state.key3}
+                    key4={this.state.key4}
+                    key5={this.state.key5}
+                ></Second>
+            </React.Fragment>
+        )
+    }
+
+}
+export default First;
+
+Second.tsx
+===========
+import React from 'react';
+
+interface IProps {
+    key1: string;
+    key2: number;
+    key3: boolean;
+    key4: any;
+    key5: any;
+}
+interface IState {};
+
+class Second extends React.Component<IProps, IState>{
+    constructor(props: IProps) {
+        super(props)
+    }
+
+    render() {
+        return (
+            <React.Fragment>
+                <h1>SecondComponent</h1>
+                <h1>Key1:{this.props.key1}</h1>
+                <h1>Key2:{this.props.key2}</h1>
+                <h1>Key3:{JSON.stringify(this.props.key3)}</h1>
+                <h1>Key4:{JSON.stringify(this.props.key4)}</h1>
+                <h1>key5:</h1>
+                <table>                    
+                    <tr>
+                        <th>SL.No</th>
+                        <th>p_id</th>
+                        <th>p_name</th>
+                        <th>p_cost</th>
+                    </tr>
+                    {this.props.key5.map((element:any,index:number)=>(
+                        <tr key={index}>
+                            <td>{index+1}</td>
+                            <td>{element.p_id}</td>
+                            <td>{element.p_name}</td>
+                            <td>{element.p_cost}</td>
+                        </tr>
+                    ))}
+                </table>
+            </React.Fragment>
+        )
+    }
+}
+
+export default Second;
+
+
+index.tsx(add below code)
+=========
+import First from './First';
+ReactDOM.render(
+  <React.StrictMode>
+  
+    <First/>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+
+
+30-3-2020
+==============
+
+Passing data from parent to child and then passing data from child to sub-child
+
+Parent.tsx
+===========
+
+import React from "react";
+import Child from "./Child";
+
+interface IProps {}
+
+interface IState {
+    name:string;
+    brand:string;
+    price:number;
+    qty:number;
+    stockLeft:number;
+    image:string;
+}
+
+class Parent extends React.Component<IProps,IState>{
+    constructor(props:IProps){
+        super(props)
+        this.state = {
+            name:"Shirt",
+            brand:"Polo",
+            price:100,
+            qty:3,
+            stockLeft:100,
+            image:"https://mean7pm.s3.ap-south-1.amazonaws.com/p1.jpg"
+        }
+    }
+
+    render(){
+        return(
+            <React.Fragment>
+                <Child  name={this.state.name}
+                        brand={this.state.brand}
+                        price={this.state.price}
+                        qty={this.state.qty} 
+                        stockLeft={this.state.stockLeft}
+                        image={this.state.image}/>
+                        
+            </React.Fragment>
+        )
+    }
+}
+export default Parent;
+
+Child.tsx
+==========
+import React from "react";
+import SubChild from "./SubChild";
+interface IProps {
+    name:string;
+    brand:string;
+    price:number;
+    qty:number;
+    stockLeft:number;
+    image:string;
+}
+
+interface IState {
+    discount:number;
+}
+
+class Child extends React.Component<IProps,IState>{
+    constructor(props:IProps){
+        super(props)     
+        this.state = {
+            discount: 10
+        }   
+    }
+
+    render(){
+        return(
+            <React.Fragment>
+                <SubChild {...this.props} discount={this.state.discount}/>
+            </React.Fragment>
+        )
+    }
+}
+
+export default Child;
+
+SubChild.tsx
+============
+
+import React from "react";
+
+interface IProps {
+    name:string;
+    brand:string;
+    price:number;
+    qty:number;
+    stockLeft:number;
+    image:string;
+
+    discount:number;
+}
+
+interface IState {
+}
+
+class SubChild extends React.Component<IProps,IState>{
+    constructor(props:IProps){
+        super(props)        
+    }
+
+    render(){
+        return(
+            <React.Fragment>
+                <table style={{border:"1px solid red"}}>
+                    <tr>
+                        <th>Name</th>
+                        <th>Brand</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Stock Left</th>
+                        <th>Image</th>
+                        <th>Discount</th>
+                    </tr>
+
+                    <tr>
+                        <td>{this.props.name}</td>
+                        <td>{this.props.brand}</td>
+                        <td>{this.props.price}</td>
+                        <td>{this.props.qty}</td>
+                        <td>{this.props.stockLeft}</td>
+                        <td><img width="100" src={this.props.image}/></td>
+                        <td>{this.props.discount}</td>
+                    </tr>
+                </table>
+            </React.Fragment>
+        )
+    }
+}
+
+export default SubChild;
+
+index.tsx(add below code)
+===========
+import Parent from './Parent';
+
+ReactDOM.render(
+  <React.StrictMode>
+  
+    <Parent/>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+
+31-03-2021
+=================
+
+Passing data from child to parent Component using event handlers
+
+
+Parent.tsx
+==========
+import React, { Component } from 'react';
+import Child from './Child';
+
+
+interface IProps { }
+interface IState {
+    name: string;
+    address: string;
+    course: string;
+}
+
+class Parent extends Component<IProps, IState>{
+    constructor(props: IProps) {
+        super(props)
+        this.state = {
+            name: "AshokIT",
+            address: "Hyderabad",
+            course: "ReactJS"
+        }        
+    }
+
+    updateCourse = ()=>{
+        this.setState({
+            course: "ReactJS with Typescript"
+        })   
+    }
+
+    updateAddress = (addressArg:string)=>{
+        this.setState({
+            address: addressArg
+        })
+    }
+    render() {
+        return (
+            <React.Fragment>                
+                <Child name={this.state.name}
+                        address={this.state.address}
+                        course={this.state.course}
+                        updateCourse={this.updateCourse}
+                        updateAddress={this.updateAddress}/>
+            </React.Fragment>
+        )
+    }
+}
+export default Parent;
+
+Child.tsx
+==========
+import React, {Component} from 'react';
+
+interface IProps{
+    name: string;
+    address: string;
+    course: string;
+    updateCourse: ()=>any;
+    updateAddress:(addressArg:string)=>any;
+}
+interface IState{}
+
+class Child extends Component<IProps,IState>{
+    constructor(props:IProps){
+        super(props)
+    }
+    render(){
+        return(
+            <React.Fragment>
+                <h1>Name:{this.props.name}</h1>
+                <h1>address:{this.props.address}</h1>
+                <h1>course:{this.props.course}</h1>
+                <button onClick={this.props.updateCourse}>UpdateCourse</button>
+                <button onClick={()=>{this.props.updateAddress('Hyderabad,India')}}>UpdateAddress</button>
+            </React.Fragment>
+        )
+    }
+}
+export default Child;
+
+index.tsx(add below code)
+=========
+import Parent from './childToParent/Parent';
+
+ReactDOM.render(
+  <React.StrictMode>
+  
+    <Parent/>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+Also refer Demo1.tsx and Demo2.tsx example present in 31-03-2021 folder where data (key1,key2,fun_one,fun_two) of Demo1 component is passed to 
+demo2 component and later in Demo2 Component we are changing key1,key2 values by using onClick event
+
+Demo1.tsx
+=========
+import React, { Component } from "react";
+import Demo2 from "./Demo2";
+interface IState{
+    param1:string;
+    param2:string;
+};
+interface IProps{}
+class Demo1 extends Component<IProps,IState>{
+    constructor(props:IProps){
+        super(props);
+        this.state = {
+            param1 : "Hello_1",
+            param2 : "Hello_2"
+        }
+    };
+    fun_one = (arg1:any):any=>{
+        this.setState({
+            param1 : arg1
+        })
+    };
+    fun_two = (arg1:any):any=>{
+        this.setState({
+            param2 : arg1
+        })
+    };
+
+    render(){
+        return(
+            <React.Fragment>
+                <Demo2 key1={this.state.param1}
+                       key2={this.state.param2}
+                       key3={this.fun_one}
+                       key4={this.fun_two}></Demo2>
+            </React.Fragment>
+        )
+    }
+
+
+};
+export default Demo1;
+
+Demo2.tsx
+=========
+import React from "react";
+interface IProps{
+    key1:string;
+    key2:string;
+    key3:(arg1:any)=>any;
+    key4:(arg1:any)=>any;
+}
+interface IState{}
+class Demo2 extends React.Component<IProps,IState>{
+    constructor(props:IProps){
+        super(props);
+    };
+    render(){
+        return(
+            <React.Fragment>
+                <h1>{this.props.key1}</h1>
+                <h1>{this.props.key2}</h1>
+                <button onClick={ ()=>{this.props.key3("ReactJS")} }>ClickMe</button>
+                <button onClick={ ()=>{this.props.key4("NodeJS")} }>ClickMe</button>
+            </React.Fragment>
+        )
+    };
+};
+export default Demo2;
+
+index.tsx
+==========
+import Demo1 from './childToParent/Demo1';
+
+ReactDOM.render(
+  <React.StrictMode>
+  
+    <Demo1/>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+
+05-04-2021
+===============
+
+References
+    -  we will access "DOM elements" with the help of "References".
+    -  we will create References by using "createRef()" predefined function in ReactJS.
+    -  username = React.createRef<HTMLInputElement>() //create a reference
+    -  this.username.current?.value //access the value
+
+
+Login.tsx
+=========
+import React from "react";
+
+interface IState {
+    login_status: string
+ }
+interface IProps { }
+
+class Login extends React.Component<IProps, IState>{
+    constructor(props: IProps) {
+        super(props)
+        this.state = {
+            login_status : ""
+        }
+    }
+
+    u_name = React.createRef<HTMLInputElement>()
+    u_pwd = React.createRef<HTMLInputElement>()
+
+    login = () => {
+        if (this.u_name.current?.value === "admin" &&
+            this.u_pwd.current?.value === "admin") {
+            this.setState({
+                login_status: "Success"
+            })
+        }else{
+            this.setState({
+                login_status: "Failed"
+            })
+        }
+    }
+
+    render() {
+        return (
+            <React.Fragment>
+                <input type="text" placeholder="username" ref={this.u_name} /> <br />
+                <input type="password" placeholder="password" ref={this.u_pwd} /> <br />
+
+                <button onClick={this.login}>Login</button>
+
+                <p>{this.state.login_status}</p>
+            </React.Fragment>
+        )
+    }
+}
+export default Login
+
+
+Tried Register.tsx example (with firstname,lastname,email,phoneno,address,gender,languages,country)
+
+7-04-2021
+=========

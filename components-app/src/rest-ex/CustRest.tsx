@@ -54,16 +54,16 @@ class CustRest extends Component<CustRestProps, CustRestState>{
                         <TableHead >
                             <TableRow>
                                 <TableCell>Name</TableCell>
-                                <TableCell align="right">City</TableCell>
-                                <TableCell align="right">Country</TableCell>
+                                <TableCell>City</TableCell>
+                                <TableCell>Country</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {this.state.rows.map((r:any)=>( 
                             <TableRow key={r.name}>
                                 <TableCell component="th" scope="row" >{r.Name}</TableCell>
-                                <TableCell align="right">{r.City}</TableCell>
-                                <TableCell align="right">{r.Country}</TableCell>
+                                <TableCell>{r.City}</TableCell>
+                                <TableCell>{r.Country}</TableCell>
                             </TableRow>
                         ))}
 

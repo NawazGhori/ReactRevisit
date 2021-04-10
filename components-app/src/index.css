@@ -12,14 +12,14 @@ code {
     monospace;
 }
 
-table,th,td{
+/* table,th,td{
   border: 1px solid red;
 }
 table{
-/* width: 100%; */
+width: 100%;
 border-collapse: collapse;
 text-align: center;
-}
+} */
 
 /* th{
   height: 5rem;
@@ -32,6 +32,6 @@ font-weight: bold;
 vertical-align: bottom;
 } */
 
-tr:hover{
+/* tr:hover{
 background-color: yellow;
-}
+} */

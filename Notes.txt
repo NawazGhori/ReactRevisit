@@ -1052,3 +1052,44 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
+ (tried implementing using material table check git)
+
+09-04-2021
+==========
+
+                                        **** MERN STACK DEVELOPMENT ****
+        M - MongoDB        E - ExpressJS        R - ReactJS        N - NodeJS
+
+        we are using "ReactJS" as Front End.
+        we will use "NodeJS" as Backend.
+        we will use "MongoDB" as DataBase.
+        we will use "ExpressJS" to develop Rest Services.
+
+        GET,  POST, PUT, DELETE  ---
+        
+MongoDB
+-------
+    - MongoDB is NoSQL DataBase (Won't Supports Either SQL or PLSQL).
+    - MongoDB Supports the "JSON".
+    - MongoDB DataBase is "Light Weight" DataBase.
+
+Terminology
+===========
+                        SQL                                 NoSQL
+
+    - Support Both SQL & PLSQL                      Wont Supports SQL or PLSQL.
+    - MySQL, SQLServer,Oracle,...                   MongoDB
+    - Won't Supports JSON                           Supports JSON.
+    - Tables                                        Collection
+    - DataBase                                      DataBase
+    - Rows                                          Records
+    - Primary Key                                   _id
+
+    - MongoDB DataBase provides cloud support.
+
+                URL : https://account.mongodb.com/account/login
+
+
+
+
+

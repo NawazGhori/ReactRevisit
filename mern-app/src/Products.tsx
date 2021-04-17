@@ -32,7 +32,7 @@ class Products extends Component<ProductsProps, ProductsState>{
             <React.Fragment>
                 {/* {JSON.stringify(this.state.products)} */}
                 <TableContainer component={Paper}>
-                    <Table size={"small"}>
+                    <Table size={"small"} className="my-table">
                         <TableHead>
                             <TableRow>
                                 <TableCell>Name</TableCell>

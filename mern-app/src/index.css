@@ -11,3 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.my-table{
+  width: 650px  !important;
+  margin: 0 auto;
+}

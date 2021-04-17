@@ -11,7 +11,7 @@ interface IState{}
 
 
 
-class App extends Component<IProps,IState>{
+class AppBarComponent extends Component<IProps,IState>{
     constructor(props:IProps){
       super(props);
     };
@@ -25,7 +25,7 @@ class App extends Component<IProps,IState>{
                         <MenuIcon />
                      </IconButton>
                      <Typography variant="h6" style={{flexGrow:1}} color="inherit">
-                          AshokIT
+                          React ReVisit
                      </Typography>
                      <Button color="inherit">Login</Button>
                   </Toolbar>
@@ -37,4 +37,4 @@ class App extends Component<IProps,IState>{
 };
 
 
-export default AppBar;
+export default AppBarComponent;

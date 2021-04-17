@@ -16,13 +16,12 @@ import Rest from './rest-ex/Rest';
 import CustRest from './rest-ex/CustRest';
 import First from './functionalComponent/First';
 import Component1 from './functionalComponent/Component1';
+import { AppBar } from '@material-ui/core';
+
+
 ReactDOM.render(
   <React.StrictMode>
-    {/* <First arg1="hello" arg2="React "/> */}
-    {/* <First name="John" />
-    <First name="Shirt" price={100}/> */}
-    {/* <First/> */}
-    <Component1/>
+    <AppBar/>
   </React.StrictMode>,
   document.getElementById('root')
 );

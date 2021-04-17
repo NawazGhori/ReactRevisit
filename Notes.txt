@@ -1199,3 +1199,15 @@ step 10.
             public
               index.html
     **************************************
+
+
+
+
+
+15-04-2021
+===========
+    added styles to table and revision
+
+16-04-2021
+==========
+    Functional Component

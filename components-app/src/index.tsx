@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Third from './Third';
 import Events from './Events';
-import First from './First';
+// import First from './First';
 import Assign1 from './assign1';
 // import Parent from './Parent';
 // import Parent from './childToParent/Parent';
@@ -14,10 +14,15 @@ import Login from './references/Login';
 import Register from './references/register';
 import Rest from './rest-ex/Rest';
 import CustRest from './rest-ex/CustRest';
-
+import First from './functionalComponent/First';
+import Component1 from './functionalComponent/Component1';
 ReactDOM.render(
   <React.StrictMode>
-    <CustRest/>
+    {/* <First arg1="hello" arg2="React "/> */}
+    {/* <First name="John" />
+    <First name="Shirt" price={100}/> */}
+    {/* <First/> */}
+    <Component1/>
   </React.StrictMode>,
   document.getElementById('root')
 );

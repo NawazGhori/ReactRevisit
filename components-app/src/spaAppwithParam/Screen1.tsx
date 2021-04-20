@@ -12,7 +12,7 @@ class Screen1 extends Component<IProps,IState>{
         
     }
     navigateToScreen2 = ()=>{
-        this.props.history.push("/screen2/111?qty=10")
+        this.props.history.push("/screen2/111/pant?qty=10")
     }
     render(){
         return(

@@ -18,7 +18,7 @@ class MyApp extends Component<IProps,IState>{
             <React.Fragment>
                 <BrowserRouter>
                     <Route path="/" component={Screen1} exact={true} strict></Route>
-                    <Route path="/screen2/:p_id" component={Screen2} exact={true} strict></Route>
+                    <Route path="/screen2/:p_id/:p_name" component={Screen2} exact={true} strict></Route>
                 </BrowserRouter>
             </React.Fragment>
         )

@@ -35,3 +35,31 @@ vertical-align: bottom;
 /* tr:hover{
 background-color: yellow;
 } */
+
+.my-form{
+  margin: 0 auto;
+  max-width: 40rem;
+}
+
+form > div{
+  display: flex;
+  flex-direction: column;
+  margin: 1rem;
+}
+
+div > label{
+  margin: 1rem 0;
+}
+
+div>input{
+  height: 30px;
+  outline: none;
+  /* border-radius: 20px; */
+}
+
+button{
+  background-color: blue;
+  color: white;
+  padding: 0.8rem;
+  border: none;
+}

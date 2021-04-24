@@ -22,7 +22,7 @@ export class MyApp extends Component<IProps, IState>{
                     <br/><br/>
 
                     <Route path="/signin" component={SignInScreen} exact={true} strict></Route>
-                    <Route path="/register" component={RegisterScreen} exact={true} strict></Route>
+                    <Route path="/register/:email/:pwd" component={RegisterScreen} exact={true} strict></Route>
                 </BrowserRouter>
             </React.Fragment>
         )

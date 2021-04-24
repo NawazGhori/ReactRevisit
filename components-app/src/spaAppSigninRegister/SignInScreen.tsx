@@ -22,7 +22,9 @@ export class SignInScreen extends Component<IProps, IState>{
         console.log(this.email.current?.value)
         console.log(this.password.current?.value)
 
-        this.props.history.push("/register?email="+this.email.current?.value+"&pwd="+this.password.current?.value)
+        // this.props.history.push("/register?email="+this.email.current?.value+"&pwd="+this.password.current?.value)
+
+        this.props.history.push("/register/"+this.email.current?.value+"/"+this.password.current?.value)
 
     }
     render() {

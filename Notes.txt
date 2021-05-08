@@ -1317,8 +1317,9 @@ steps to create the "server"
 
     => http://localhost:8080/products
 
-
-
+******************
+30-04-2021
+******************
                                             implement rest api by using nodejs 
                                             ----------------------------------
 
@@ -1369,6 +1370,98 @@ start the node server
 
 test the rest api by using Postman
     => http://localhost:8080/products
+
+
+************************
+03-05-2021
+***********************
+
+Integrate the Above Rest API Call to ReactJS
+--------------------------------------------
+
+1) create the react application
+    > npx create-react-app redux-app --template typescript
+
+2) switch to react application
+    > cd redux-app
+
+3) download the node modules
+       => redux      @types/redux
+       => react-redux     @types/react-redux
+       => redux-thunk       @types/redux-thunk
+       => axios             @types/axios
+       
+       > yarn add redux @types/redux react-redux @types/react-redux redux-thunk @types/redux-thunk axios @types/axios --save
+
+4) create the modal
+    we have following rest api call.
+    http://localhost:8080/
+    based on above response, we must create modal object
+
+
+**********************************************
+redux-thunk
+         src
+           modal
+             Product.tsx
+**********************************************
+
+    finally "Product" modal is ready.
+
+
+
+
+*********************
+05-05-2021
+***********************
+
+step 5.create the types  (plan sheet)
+    ****************************************
+    redux-app
+            src
+              types
+                 ProductActionTypes.tsx
+    ****************************************
+
+    finally "ProductsActionTypes" are ready.
+        => ProductsLoading
+        => ProductsLoadingSuccess
+        => ProductsLoadingFail
+
+step 6.implement the actions
+
+    ****************************************
+    redux-app
+           src
+             actions
+               ProductsActions.tsx
+    ***************************************
+
+=================
+06-05-2021
+=====================
+
+step 7. create the reducer
+    **************************************
+    redux-app
+            src
+              reducer
+                ProductsReducer.tsx
+    **************************************
+
+        finally "ProductReducer" is ready
+
+
+step 8. create the store
+    index.tsx
+
+step 9.
+    apply the "dispatch" and "subscription" from "" component
+
+
+
+
+
 
 
 

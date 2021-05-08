@@ -1215,3 +1215,104 @@ step 10.
 17-04-2021
 =========
     AppBar of Material UI
+
+
+
+
+
+
+
+28-04-2021
+================
+
+    MERN STACK
+                                        ----------
+1) create the mongodb database.
+        - MongoDB database is NoSQL database (won't support SQL & PLSQL).
+        - MongoDB database supports JSON (won't support tables).
+        - MongoDB database is light weight database.
+        - MongoDB database supports cloud Environment.
+        - MongoDB database provides cloud Environment in the form of a "MongoDB Atlas".
+            URL : https://account.mongodb.com/account/login
+
+Comparision
+-----------
+SQL DataBases                                               NoSQL DataBases
+--------------                                              ----------------
+Ex.
+1)
+    Oracle                                                      MongoDB
+    MySQL                                                       CassandraDB
+    SQLServer
+2) tables                                                       collections
+3) DataBases                                                    DataBases
+4) primary key                                                  _id
+
+creating the MongoDB Atlas account   (cloud)
+--------------------------------------------
+Details
+-------
+DataBase Name : RJS-06
+Collection Name : products
+password : admin
+Connection URL : mongodb+srv://admin:admin@cluster0.hz6xa.mongodb.net/RJS-06?retryWrites=true&w=majority 
+
+
+
+29-04-2021
+==========
+
+***** NodeJS *****
+
+    - NodeJS is "server" side scripting language.
+    - NodeJS, used to develop the "servers".
+            Http Server
+            TCP Server
+    - we will develop "NodeJS" Applications by using "JavaScript".
+    - NodeJS, supports libraries (modules).
+    - we will download above libraries by using "yarn" tool.
+    - all the libraries downloads to "node_modules" folder in current path.
+
+modules
+-------
+1) express
+    - express module, used to develop the rest services.
+    Ex.
+        GET
+        POST
+        PUT
+        DELETE
+        HEAD
+        ---
+        ---
+        ---
+2) mongodb
+    - helps to connect to mongodb database.
+3) body-parser
+    - used to receive the data from client application
+4) cors
+    - used to enable the communication between different ports Available in application.
+
+steps to create the "server"
+============================
+1) create directory
+    Ex.
+        server
+2) switch to server folder
+    > cd server
+3) download the node modules.
+    => express
+    => body-parser
+    => cors
+    => mongodb
+            > yarn add express body-parser cors mongodb --save
+4) create the server file.
+    Ex.
+        server.js
+5) start the node server
+    > node server
+
+
+6) test the following rest api call by using "Postman"
+
+    => http://localhost:8080/products

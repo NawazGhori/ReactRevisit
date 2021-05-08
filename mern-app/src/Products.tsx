@@ -15,6 +15,8 @@ class Products extends Component<ProductsProps, ProductsState>{
             products: []
         }
     }
+
+    //use node-backend application for backend server
     componentDidMount(){
         axios.get("http://localhost:8080/products").then((posRes)=>{
             const {data} = posRes

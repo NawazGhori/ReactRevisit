@@ -1316,3 +1316,59 @@ steps to create the "server"
 6) test the following rest api call by using "Postman"
 
     => http://localhost:8080/products
+
+
+
+                                            implement rest api by using nodejs 
+                                            ----------------------------------
+
+download the images   (p1.png to p6.png)
+deploy into AWS Server   (cloud images)
+store images path into "MongoDB" DataBase
+develop the rest api by using "NodeJS"  (GET Request)
+test the rest api by using "Postman"
+
+Cloud Images path's
+-------------------
+=> https://rjs-06.s3.ap-south-1.amazonaws.com/p1.jpg
+=> https://rjs-06.s3.ap-south-1.amazonaws.com/p2.jpg
+=> https://rjs-06.s3.ap-south-1.amazonaws.com/p3.jpg
+=> https://rjs-06.s3.ap-south-1.amazonaws.com/p4.jpg
+=> https://rjs-06.s3.ap-south-1.amazonaws.com/p5.jpg
+=> https://rjs-06.s3.ap-south-1.amazonaws.com/p6.jpg
+
+*****************************************************************************************************************
+database name       :   ecommerce
+collection name     :   products
+URL : mongodb+srv://admin:admin@cluster0.hz6xa.mongodb.net/ecommerce?retryWrites=true&w=majority
+*****************************************************************************************************************
+create the folder
+Ex.
+    rev_server
+
+switch to rev_server folder
+    > cd rev_server
+
+download the node modules
+    1) express
+            - express used to develop the rest services
+    2) cors
+            - used to enable the ports communicaction
+    3) mongodb
+            - used to connect to mongodb database
+    4) body-parser
+            - used to receive the data from client application
+    > yarn add express cors mongodb body-parser --save
+
+develop the rest api by using nodejs
+    server.js
+
+
+start the node server
+    > node server
+
+test the rest api by using Postman
+    => http://localhost:8080/products
+
+
+

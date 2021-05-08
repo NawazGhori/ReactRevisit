@@ -38,10 +38,10 @@ let mclient = mongodb.MongoClient;
 
 //create the GET Request
 app.get("/products",(req,res)=>{
-    mclient.connect("mongodb+srv://admin:admin@cluster0.hz6xa.mongodb.net/RJS-06?retryWrites=true&w=majority",(err,connection)=>{
+    mclient.connect("mongodb+srv://admin:admin@cluster0.hz6xa.mongodb.net/ecommerce?retryWrites=true&w=majority",(err,connection)=>{
         if(err) throw err;
         else{
-            let db = connection.db("RJS-06");
+            let db = connection.db("ecommerce");
             db.collection("products").find().toArray((err,array)=>{
                 if(err) throw err;
                 else{

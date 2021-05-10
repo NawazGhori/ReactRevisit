@@ -38,7 +38,7 @@ app.post("/login", (req, res) => {
                         if(arr.length>0){
                             res.send({"login":"success"})
                         }else{
-                            res.send({"login":"fail"})
+                            res.send({"login":"incorrect details"})
                         }
                     }
                 })

@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import {connect } from 'react-redux';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+  constructor(props) {
+    super(props)
+  }
+  componentDidMount(){
+    this.props.my_fun();
+  }
+  render() {
+    return (
+      <React.Fragment>
+        {JSON.stringify(this.props.res)}
+      </React.Fragment>
+    )
+  }
 }
-
-export default App;
+const receive = (state)=>{
+  return{
+    res: state
+  }
+}
+const send = (dispatch)=>{
+  return{
+    my_fun: ()=>{dispatch({type:"EMPLOYEES",value:{}})}
+  }
+}
+export default connect(receive,send)(App);

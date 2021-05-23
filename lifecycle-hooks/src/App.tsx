@@ -15,8 +15,8 @@ class App extends React.Component<IProps,IState>{
   //constructor will execute "only" once
   //in constructor generally we will receive "props" and we can initilize "state" also
   constructor(props:IProps){
-    console.log("parent constructor")
     super(props)
+    console.log("parent constructor")
     this.state = {
       key1: "Hello_1",
       key2: ""
@@ -37,6 +37,16 @@ class App extends React.Component<IProps,IState>{
     }   
   }
 
+  updateState = ()=>{
+    this.setState({
+      key1: "ReactJS"
+    })
+  }
+
+  shouldComponentUpdate(){
+    return true;//if false then setState will not work i.e, state wont update
+  }
+
   //after componentWillMount() automatically render() life cycle hook will execute
   //this life cycle hook is "mandatory" life cycle hook
   //in general we will place "presentation" logic here
@@ -48,7 +58,9 @@ class App extends React.Component<IProps,IState>{
       <React.Fragment>
         key1: {this.state.key1}<br/><br/>
         key2: innerWidth is {this.state.key2}<br/><br/>
-        <Child key1={this.state.key1}/>
+        <Child key1={this.state.key1}/><br/><br/>
+        <button onClick={this.updateState}>Update state</button>
+
       </React.Fragment>
     )
   }
@@ -58,8 +70,13 @@ class App extends React.Component<IProps,IState>{
   //in general, in componentDidMount() will make rest api calls
   //in general, we will change state also here based on rest api response
   componentDidMount(){
-      console.log("parent componentDidMount()");
+      console.log("parent componentDidMount");
   }
+
+  componentWillReceiveProps(nextProps:any){
+    console.log("parent componentWillReceiveProps")
+  }
+  
 }
 
 export default App;

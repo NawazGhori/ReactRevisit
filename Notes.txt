@@ -1847,6 +1847,8 @@ step 4. create the Parent Component -> Child
     componentWillReceiveProps(nextProps:any):
     
     shouldComponentUpdate():
+        return true - component state will update
+        return false - component state will not update
 
 
     the order is:
@@ -1858,3 +1860,6 @@ step 4. create the Parent Component -> Child
         child render
         child componentDidMount
         parent componentDidMount()
+        //after update of parent state
+        parent render
+        child componentWillRecieveProps

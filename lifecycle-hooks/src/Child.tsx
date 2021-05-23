@@ -27,5 +27,13 @@ class Child extends Component<IProps,IState>{
         console.log("child componentDidMount")
     }
 
+    componentWillReceiveProps(nextProps:any){
+        console.log("child componentWillRecieveProps")
+    }
+
+    shouldComponentUpdate(){
+        return false;
+    }
+
 }
 export default Child;

@@ -1758,4 +1758,103 @@ step 7.
     > npm run build
     > npm run deploy
 
+================================
+15-05-2021
+================================
+**** Forms ****
 
+Steps to implement the MiniProject
+----------------------------------
+    => Code Reusable
+    => Material-UI (Rich UI)
+    => Thunk Middleware
+    => MongoDB (Atlas)
+    => MERN Stack Development
+    => AWS Deployment
+
+step 1.  create the react application
+
+    > npx create-react-app miniproject-app --template typescript
+        where "miniproject-app" is the name of the react application.
+
+step 2.  switch to react application
+    > cd miniproject-app
+
+step 3.  download the libraries
+        => axios                    @types/axios
+        => redux                    @types/redux
+        => react-redux              @types/react-redux
+        => redux-thunk              @types/redux-thunk
+        website : https://material-ui.com/getting-started/installation/
+
+        => @material-ui/core
+        => @material-ui/icons
+
+        CDN'S : 
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+
+
+======================================================
+17-05-2021
+========================================
+    React Lifecycle hooks
+    --------------------
+
+step 1.  create the react application
+
+    > npx create-react-app lifecycle-hooks --template typescript
+        where "lifecycle-hooks" is the name of the react application.
+
+step 2.  switch to react application
+    > cd lifecycle-hooks 
+
+step 3. create the Parent Component -> App
+            lifecycle-hooks
+                src
+                    App.tsx
+
+step 4. create the Parent Component -> Child
+            lifecycle-hooks
+                src
+                    Child.tsx
+
+
+    constructor(props:IProps):
+        - when ever we create the component, automatically "constructor" will execute
+        - constructor will execute "only" once
+        - in constructor generally we will receive "props" and we can initilize "state" also
+
+    componentWillMount():        
+      - some times we may change the state, based on state & props
+      - if you want to change state after constructor, then recomended life cycle hook is componentWillMount()
+      - it's recomended to change state here by using setState() function
+      - in general we will configure global parameters like "width" and "height" also
+
+    render():
+      - after componentWillMount() automatically render() life cycle hook will execute
+      - this life cycle hook is "mandatory" life cycle hook
+      - in general we will place "presentation" logic here
+      - when ever change detected in state, automatically "render()" function will execute
+      - never use "setState()" function here
+
+    componentDidMount():
+      - after render() life cycle hook, automatically componentDidMount() life cycle hook will execute
+      - in general, in componentDidMount() will make rest api calls
+      - in general, we will change state also here based on rest api response
+
+    componentWillReceiveProps(nextProps:any):
+    
+    shouldComponentUpdate():
+
+
+    the order is:
+        parent constructor
+        parent componentWillMount
+        parent render
+        child constructor
+        child componentWillMount
+        child render
+        child componentDidMount
+        parent componentDidMount()
